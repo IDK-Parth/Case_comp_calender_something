@@ -1,0 +1,6 @@
+/Uploads/
+.venv/
+.env
+__pycache__/
+*.pyc
+checks.py
