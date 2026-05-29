@@ -6,6 +6,7 @@ from queue import Queue
 from threading import Lock
 from datetime import datetime
 from typing import List, Optional, Dict, Any
+#from langchain.chat_models import ChatGoogleGenerativeAI
 from langchain_google_genai import ChatGoogleGenerativeAI
 from pydantic import BaseModel, Field
 from google.genai import Client

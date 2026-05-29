@@ -4,3 +4,5 @@
 __pycache__/
 *.pyc
 checks.py
+/easyocr/
+/easyocr_cache/

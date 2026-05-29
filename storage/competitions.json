@@ -1,0 +1,610 @@
+[
+    {
+        "competition": "TATA Crucible",
+        "month": "JUNE",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:31.706693"
+    },
+    {
+        "competition": "GEP Gameplan",
+        "month": "JUNE",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:31.726386"
+    },
+    {
+        "competition": "Sun Tzu Avalon",
+        "month": "JUNE",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:31.733496"
+    },
+    {
+        "competition": "HCCB Coca Cola",
+        "month": "JUNE",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:31.739768"
+    },
+    {
+        "competition": "AB InBev 10+ Challenge",
+        "month": "JUNE",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:31.745800"
+    },
+    {
+        "competition": "Wipro B-Pro",
+        "month": "JULY",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:31.754604"
+    },
+    {
+        "competition": "Amazon ACE",
+        "month": "JULY",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:31.762643"
+    },
+    {
+        "competition": "Vois Vantage",
+        "month": "JULY",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:31.769456"
+    },
+    {
+        "competition": "TATA Steel-a-thon",
+        "month": "JULY",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:31.775684"
+    },
+    {
+        "competition": "TVS CREDIT",
+        "month": "JULY",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:31.782275"
+    },
+    {
+        "competition": "GE Thinkaloud",
+        "month": "JULY",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:31.789398"
+    },
+    {
+        "competition": "Microsoft PM Engage",
+        "month": "JULY",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:31.796206"
+    },
+    {
+        "competition": "ICICI Beat the Curve",
+        "month": "JULY",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:31.803429"
+    },
+    {
+        "competition": "Accenture Innovation",
+        "month": "JULY",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:31.810059"
+    },
+    {
+        "competition": "Swiss Reimagine",
+        "month": "JULY",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:31.817369"
+    },
+    {
+        "competition": "Asian Paints Chain Reaction",
+        "month": "JULY",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:31.825286"
+    },
+    {
+        "competition": "Welspun Disruptor",
+        "month": "JULY",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:31.832124"
+    },
+    {
+        "competition": "Mahindra Rise",
+        "month": "JULY",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:31.839118"
+    },
+    {
+        "competition": "Perfetti Confy Challenge",
+        "month": "JULY",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:31.845230"
+    },
+    {
+        "competition": "HUL LIME",
+        "month": "JULY",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:31.852681"
+    },
+    {
+        "competition": "HUL TechTonic",
+        "month": "JULY",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:31.859578"
+    },
+    {
+        "competition": "Asian Paints Canvas",
+        "month": "JULY",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:31.866522"
+    },
+    {
+        "competition": "Tally BizWiz",
+        "month": "JULY",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:31.873065"
+    },
+    {
+        "competition": "Bond with Pidilite",
+        "month": "JULY",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:31.879452"
+    },
+    {
+        "competition": "Kenvue Katalyzers",
+        "month": "JULY",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:31.887412"
+    },
+    {
+        "competition": "Trilytics by Trinity",
+        "month": "JULY",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:31.894227"
+    },
+    {
+        "competition": "Dabur Verve",
+        "month": "JULY",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:31.901984"
+    },
+    {
+        "competition": "Flipkart WIRED",
+        "month": "SEPTEMBER",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:31.909367"
+    },
+    {
+        "competition": "Loreal Sustainability",
+        "month": "SEPTEMBER",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:31.916794"
+    },
+    {
+        "competition": "Infosys Ingenious",
+        "month": "SEPTEMBER",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:31.930513"
+    },
+    {
+        "competition": "IT Interrobang",
+        "month": "SEPTEMBER",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:31.945979"
+    },
+    {
+        "competition": "HUL Techtonic",
+        "month": "SEPTEMBER",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:31.960999"
+    },
+    {
+        "competition": "Samsung EDGE",
+        "month": "SEPTEMBER",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:31.976462"
+    },
+    {
+        "competition": "Amex Super Bowl",
+        "month": "SEPTEMBER",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:31.989731"
+    },
+    {
+        "competition": "HUL Finance",
+        "month": "SEPTEMBER",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:32.006554"
+    },
+    {
+        "competition": "Marico OTW",
+        "month": "SEPTEMBER",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:32.021620"
+    },
+    {
+        "competition": "ABG Leadership Program",
+        "month": "SEPTEMBER",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:32.040671"
+    },
+    {
+        "competition": "Amazon Ads",
+        "month": "SEPTEMBER",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:32.054885"
+    },
+    {
+        "competition": "Accenture Strategy",
+        "month": "SEPTEMBER",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:32.073187"
+    },
+    {
+        "competition": "Cummins Redefine",
+        "month": "OCTOBER",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:32.090567"
+    },
+    {
+        "competition": "Diageo Be Spirited",
+        "month": "OCTOBER",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:32.109223"
+    },
+    {
+        "competition": "TATA Imagination Challenge",
+        "month": "OCTOBER",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:32.127157"
+    },
+    {
+        "competition": "Myntra Stylbiz",
+        "month": "OCTOBER",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:32.147187"
+    },
+    {
+        "competition": "Optum Stratethon",
+        "month": "OCTOBER",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:32.167081"
+    },
+    {
+        "competition": "Navi Crack the Case",
+        "month": "OCTOBER",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:32.186807"
+    },
+    {
+        "competition": "The Governance Challenge",
+        "month": "OCTOBER",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:32.206277"
+    },
+    {
+        "competition": "RPG Blizzard",
+        "month": "OCTOBER",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:32.226666"
+    },
+    {
+        "competition": "Bajaj Finserv Atom",
+        "month": "OCTOBER",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:32.245996"
+    },
+    {
+        "competition": "Bharti FinPro",
+        "month": "OCTOBER",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:32.267810"
+    },
+    {
+        "competition": "Reckitt Global Challenge",
+        "month": "OCTOBER",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:32.284832"
+    },
+    {
+        "competition": "Mondelez Maestros",
+        "month": "OCTOBER",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:32.310195"
+    },
+    {
+        "competition": "Airtel iCreate",
+        "month": "NOVEMBER",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:32.329191"
+    },
+    {
+        "competition": "Reliance TUP",
+        "month": "NOVEMBER",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:32.346486"
+    },
+    {
+        "competition": "TITAN Elevate",
+        "month": "NOVEMBER",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:32.365217"
+    },
+    {
+        "competition": "Kirloskar Case Comp",
+        "month": "NOVEMBER",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:32.381738"
+    },
+    {
+        "competition": "Philips ThinkUp",
+        "month": "NOVEMBER",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:32.402021"
+    },
+    {
+        "competition": "Kotak Explore",
+        "month": "NOVEMBER",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:32.419329"
+    },
+    {
+        "competition": "PwC Indian Campus Contender",
+        "month": "NOVEMBER",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:32.437339"
+    },
+    {
+        "competition": "KPMG Ideation Challenge",
+        "month": "NOVEMBER",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:32.458252"
+    },
+    {
+        "competition": "Tesco ASCEND Case Challenge",
+        "month": "NOVEMBER",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:32.475676"
+    },
+    {
+        "competition": "Hero Motorcorp Campus Challenge",
+        "month": "NOVEMBER",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:32.493826"
+    },
+    {
+        "competition": "Colgate Transcend",
+        "month": "NOVEMBER",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:32.509367"
+    },
+    {
+        "competition": "PwC US Advisory Whitepaper Competition",
+        "month": "NOVEMBER",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:32.526889"
+    },
+    {
+        "competition": "Loreal Brandstorm",
+        "month": "JANUARY",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:32.543948"
+    },
+    {
+        "competition": "JSJ Quest",
+        "month": "JANUARY",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:32.563823"
+    },
+    {
+        "competition": "Goldman Sachs Women' $ Possibilities Summit",
+        "month": "JANUARY",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:32.586275"
+    },
+    {
+        "competition": "IDFC FAME",
+        "month": "JANUARY",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:32.605463"
+    },
+    {
+        "competition": "Nation with Namo: Nation Building",
+        "month": "FEBRUARY",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:32.625205"
+    },
+    {
+        "competition": "MakeMyTrip",
+        "month": "FEBRUARY",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:32.651279"
+    },
+    {
+        "competition": "Turk'$ Business",
+        "month": "FEBRUARY",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:32.673551"
+    },
+    {
+        "competition": "Boat",
+        "month": "FEBRUARY",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:32.692168"
+    },
+    {
+        "competition": "Maruti Suzuki Xcelerate",
+        "month": "MARCH",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:32.707307"
+    },
+    {
+        "competition": "Nestle Genesis",
+        "month": "MAY",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:32.722414"
+    },
+    {
+        "competition": "AMEX Young Challenge",
+        "month": "MAY",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:32.740878"
+    },
+    {
+        "competition": "IFSA Cup",
+        "month": "OTHER",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:32.760567"
+    },
+    {
+        "competition": "Harvard",
+        "month": "OTHER",
+        "registration_deadline": null,
+        "website": null,
+        "event_type": "case competition",
+        "saved_at": "2026-05-30T01:20:32.779386"
+    }
+]
