@@ -6,3 +6,8 @@ __pycache__/
 checks.py
 /easyocr/
 /easyocr_cache/
+/TO the LLMs/
+To the LLMs.zip
+credentials.json
+easyocr_cache.zip
+easyocr_cache/
