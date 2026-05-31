@@ -79,7 +79,7 @@ class CompetitionSearchEngine:
     def __init__(
         self,
         google_api_key: Optional[str] = None,
-        model_name: str = "gemini-1.5-flash-latest",
+        model_name: str = "gemini-1.5-flash",
         temperature: float = 0.1,
         max_search_results: int = 5,
     ) -> None:

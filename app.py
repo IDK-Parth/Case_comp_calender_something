@@ -8,6 +8,9 @@ from datetime import datetime
 from services.ocr_service import extract_text
 from services.llm_parser import llm
 
+# ---------- NEW: Import search engine ----------
+from services.search_engine import CompetitionSearchEngine
+
 UPLOAD_FOLDER = "uploads"
 STORAGE_DIR = "storage"
 COMPETITIONS_FILE = os.path.join(STORAGE_DIR, "competitions.json")
@@ -123,13 +126,66 @@ def invoke_llm_with_retry(llm, prompt, max_retries=3):
     # Should never reach here, but just in case
     return llm.invoke(prompt)
 
+# ---------------------------
+# NEW: Merge search results into competition dict
+# ---------------------------
+def enrich_competition_with_search(comp_dict, search_engine):
+    """
+    Call the search engine for the competition name and merge returned fields.
+    Only overwrites fields that are missing/empty or where confidence > 0.7.
+    """
+    name = comp_dict.get("competition", "")
+    if not name:
+        print("⚠️ Skipping search: competition name missing")
+        return comp_dict
+
+    print(f"🔍 Enriching '{name}' via web search...")
+    try:
+        search_data = search_engine.search(name)
+        # search_data is a dict with keys:
+        # competition, website, registration_deadline, competition_start_date,
+        # competition_end_date, organizer, confidence_score
+
+        # Merge strategy: prefer non-empty search result values,
+        # but keep original if it exists and search confidence is low
+        if search_data.get("confidence_score", 0) >= 0.5:
+            # Website
+            if not comp_dict.get("website") and search_data.get("website"):
+                comp_dict["website"] = search_data["website"]
+            # Registration deadline
+            if not comp_dict.get("registration_deadline") and search_data.get("registration_deadline"):
+                comp_dict["registration_deadline"] = search_data["registration_deadline"]
+            # Event date: search returns competition_start_date; we map to event_date if empty
+            if not comp_dict.get("event_date") and search_data.get("competition_start_date"):
+                comp_dict["event_date"] = search_data["competition_start_date"]
+            # Add new fields that were not originally in OCR schema
+            comp_dict["organizer"] = search_data.get("organizer")  # may be None
+            comp_dict["end_date"] = search_data.get("competition_end_date")
+            comp_dict["search_confidence"] = search_data.get("confidence_score")
+        else:
+            print(f"   Low confidence ({search_data.get('confidence_score')}) – keeping original data only")
+    except Exception as e:
+        print(f"   ❌ Search failed for '{name}': {e}")
+
+    return comp_dict
+
 # ==================================================
 # ================= MAIN EXECUTION =================
 # ==================================================
 
+# ---------- NEW: Initialize the search engine ----------
+# It reads GOOGLE_API_KEY from .env (make sure .env is in the expected location)
+try:
+    search_engine = CompetitionSearchEngine()
+    print("✅ CompetitionSearchEngine initialized")
+except Exception as e:
+    print(f"⚠️ Failed to initialize search engine: {e}")
+    print("   Web enrichment will be skipped.")
+    search_engine = None
+
+# ---------- OCR extraction ----------
 all_text = ""
 
-# Read all images from uploads folder
 for file_name in os.listdir(UPLOAD_FOLDER):
     if file_name.lower().endswith((".png", ".jpg", ".jpeg")):
         image_path = os.path.join(UPLOAD_FOLDER, file_name)
@@ -140,7 +196,7 @@ for file_name in os.listdir(UPLOAD_FOLDER):
 print("\n===== OCR TEXT (first 500 chars) =====\n")
 print(all_text[:500] + ("..." if len(all_text) > 500 else ""))
 
-# LLM parsing
+# ---------- LLM parsing ----------
 prompt = f"""
 Extract all case competitions from the OCR text below.
 
@@ -158,7 +214,6 @@ OCR Text:
 {all_text}
 """
 
-# Try to call LLM with retry logic
 try:
     response = invoke_llm_with_retry(llm, prompt, max_retries=3)
     ai_output = response.content.strip()
@@ -178,7 +233,7 @@ except Exception as e:
     print("🔧 Fix your API key / quota and re-run. The script will read from uploads again.")
     sys.exit(1)
 
-# Parse JSON and save each competition
+# ---------- Parse and enrich ----------
 try:
     competitions = extract_json_from_llm_output(ai_output)
 
@@ -191,6 +246,11 @@ try:
             for field in required:
                 if field not in comp:
                     comp[field] = ""
+
+            # NEW: Enrich with web search if engine is available
+            if search_engine:
+                comp = enrich_competition_with_search(comp, search_engine)
+
             save_competition(comp)
 
         print(f"\n✅ Successfully saved {len(competitions)} competition(s) to {COMPETITIONS_FILE}")
