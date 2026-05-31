@@ -3,22 +3,19 @@ import json
 import re
 import sys
 import time
+import shutil
 from datetime import datetime
 
 from services.ocr_service import extract_text
 from services.llm_parser import llm
-
-# ---------- NEW: Import search engine ----------
 from services.search_engine import CompetitionSearchEngine
 
 UPLOAD_FOLDER = "uploads"
 STORAGE_DIR = "storage"
 COMPETITIONS_FILE = os.path.join(STORAGE_DIR, "competitions.json")
+WORKING_COMPETITIONS_FILE = os.path.join(STORAGE_DIR, "competitions_working.json")
 FAILED_OCR_FILE = os.path.join(STORAGE_DIR, "failed_ocr_text.txt")
 
-# ---------------------------
-# Helper: clean AI output and extract JSON
-# ---------------------------
 def extract_json_from_llm_output(text):
     """Extract JSON array or object from markdown-fenced or plain text."""
     text = text.strip()
@@ -74,28 +71,47 @@ def extract_json_from_llm_output(text):
     return parsed
 
 # ---------------------------
-# Helper: save a single competition to JSON file
+# Helper: save a single competition to WORKING copy
 # ---------------------------
 def save_competition(competition_data):
-    """Append one competition dictionary to competitions.json"""
+    """Append one competition dictionary to competitions_working.json (preserve original)."""
     os.makedirs(STORAGE_DIR, exist_ok=True)
 
-    if os.path.exists(COMPETITIONS_FILE):
-        with open(COMPETITIONS_FILE, "r", encoding="utf-8") as f:
+    if os.path.exists(WORKING_COMPETITIONS_FILE):
+        with open(WORKING_COMPETITIONS_FILE, "r", encoding="utf-8") as f:
             try:
                 data = json.load(f)
             except json.JSONDecodeError:
                 data = []
     else:
-        data = []
+        # If working file doesn't exist, optionally seed it from original
+        if os.path.exists(COMPETITIONS_FILE):
+            with open(COMPETITIONS_FILE, "r", encoding="utf-8") as f:
+                try:
+                    data = json.load(f)
+                except json.JSONDecodeError:
+                    data = []
+        else:
+            data = []
 
     competition_data["saved_at"] = datetime.now().isoformat()
     data.append(competition_data)
 
-    with open(COMPETITIONS_FILE, "w", encoding="utf-8") as f:
+    with open(WORKING_COMPETITIONS_FILE, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=4, ensure_ascii=False)
 
-    print(f"✅ Saved competition: {competition_data.get('competition', 'Unknown')}")
+    print(f"✅ Saved competition to working copy: {competition_data.get('competition', 'Unknown')}")
+
+# ---------------------------
+# Helper: reset working copy from original (optional)
+# ---------------------------
+def reset_working_from_original():
+    """Copy original competitions.json to competitions_working.json."""
+    if os.path.exists(COMPETITIONS_FILE):
+        shutil.copy2(COMPETITIONS_FILE, WORKING_COMPETITIONS_FILE)
+        print(f"📋 Reset working copy from original {COMPETITIONS_FILE}")
+    else:
+        print("⚠️ No original competitions.json found, working copy will start empty.")
 
 # ---------------------------
 # Helper: call LLM with retry + exponential backoff
@@ -173,8 +189,10 @@ def enrich_competition_with_search(comp_dict, search_engine):
 # ================= MAIN EXECUTION =================
 # ==================================================
 
-# ---------- NEW: Initialize the search engine ----------
-# It reads GOOGLE_API_KEY from .env (make sure .env is in the expected location)
+# ---------- Optional: reset working copy from original ----------
+reset_working_from_original()   # Remove this line if you want to keep previous working data
+
+# ---------- Initialize the search engine ----------
 try:
     search_engine = CompetitionSearchEngine()
     print("✅ CompetitionSearchEngine initialized")
@@ -247,13 +265,13 @@ try:
                 if field not in comp:
                     comp[field] = ""
 
-            # NEW: Enrich with web search if engine is available
+            # Enrich with web search if engine is available
             if search_engine:
                 comp = enrich_competition_with_search(comp, search_engine)
 
             save_competition(comp)
 
-        print(f"\n✅ Successfully saved {len(competitions)} competition(s) to {COMPETITIONS_FILE}")
+        print(f"\n✅ Successfully saved {len(competitions)} competition(s) to {WORKING_COMPETITIONS_FILE}")
 
 except json.JSONDecodeError as e:
     print(f"❌ Failed to parse extracted JSON: {e}")

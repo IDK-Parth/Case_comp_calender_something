@@ -1,200 +1,126 @@
+"""
+Minimal competition search + domain classifier.
+- Searches DuckDuckGo for competition details
+- Uses Gemini (via LangChain) to extract metadata + categories (Agri, Tech, etc.)
+"""
+
 from __future__ import annotations
 
 import json
-import logging
 import os
 import re
 from datetime import datetime
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import List, Optional, Dict, Any
 from urllib.parse import urlparse
 
 from dotenv import load_dotenv
-from pydantic import BaseModel, Field, field_validator, ValidationError
+from pydantic import BaseModel, Field
 from langchain_google_genai import ChatGoogleGenerativeAI
-from langchain_core.prompts import ChatPromptTemplate
-from langchain_core.runnables import RunnablePassthrough
+from langchain_core.messages import HumanMessage, SystemMessage
+from ddgs import DDGS  # correct package: pip install duckduckgo-search
 
-# Import the correct DDGS package (install with: pip install ddgs)
-from ddgs import DDGS
-
+# Load .env
 env_path = Path(__file__).parent.parent / ".env"
-if env_path.exists():
-    load_dotenv(dotenv_path=env_path)
-    print(f"✅ Loaded .env from {env_path}")
-else:
-    print(f"⚠️ .env not found at {env_path}, checking default locations...")
-    load_dotenv()  # fallback to default search
+load_dotenv(dotenv_path=env_path if env_path.exists() else None)
 
-# Rest of your code follows...
-# ---------------------------------------------------------------------------
-# Logging
-# ---------------------------------------------------------------------------
-logging.basicConfig(level=logging.INFO, format="%(asctime)s | %(name)s | %(levelname)s | %(message)s")
-logger = logging.getLogger("search_engine")
-
-# ---------------------------------------------------------------------------
-# Pydantic Model (unchanged)
-# ---------------------------------------------------------------------------
+# ----------------------------------------------------------------------
+# Simple output models
+# ----------------------------------------------------------------------
 class CompetitionInfo(BaseModel):
-    competition: str = Field(..., description="Exact or normalized name of the competition.")
-    website: Optional[str] = Field(default=None, description="Official competition website URL.")
-    registration_deadline: Optional[str] = Field(default=None, description="YYYY-MM-DD")
-    competition_start_date: Optional[str] = Field(default=None, description="YYYY-MM-DD")
-    competition_end_date: Optional[str] = Field(default=None, description="YYYY-MM-DD")
-    organizer: Optional[str] = Field(default=None, description="Company or group organizing the event.")
-    confidence_score: float = Field(default=0.0, ge=0.0, le=1.0)
+    competition: str
+    website: Optional[str] = None
+    registration_deadline: Optional[str] = None
+    start_date: Optional[str] = None
+    end_date: Optional[str] = None
+    organizer: Optional[str] = None
+    categories: List[str] = Field(default_factory=list, description="e.g. ['Technology', 'Agriculture', 'Business', 'Social Impact']")
+    confidence: float = Field(ge=0.0, le=1.0)
 
-    @field_validator("website")
-    @classmethod
-    def validate_url(cls, v: Optional[str]) -> Optional[str]:
-        if not v or not isinstance(v, str):
-            return None
-        v = v.strip()
-        if not v.startswith(("http://", "https://")):
-            v = "https://" + v
-        parsed = urlparse(v)
-        return v if parsed.netloc and "." in parsed.netloc else None
-
-    @field_validator("registration_deadline", "competition_start_date", "competition_end_date", mode="before")
-    @classmethod
-    def validate_date(cls, v: Optional[str]) -> Optional[str]:
-        if not v or not isinstance(v, str):
-            return None
-        v = v.strip().split("T")[0].split()[0]
-        for fmt in ("%Y-%m-%d", "%d-%m-%Y", "%m/%d/%Y", "%d/%m/%Y", "%B %d, %Y", "%b %d, %Y", "%d %B %Y", "%d %b %Y"):
-            try:
-                return datetime.strptime(v, fmt).strftime("%Y-%m-%d")
-            except ValueError:
-                continue
-        return None
-
-    def to_dict(self) -> Dict[str, Any]:
-        return self.model_dump(mode="json")
-
-# ---------------------------------------------------------------------------
-# Search Engine (no langchain-community)
-# ---------------------------------------------------------------------------
+# ----------------------------------------------------------------------
+# Search Engine (no over-engineering)
+# ----------------------------------------------------------------------
 class CompetitionSearchEngine:
-    def __init__(
-        self,
-        google_api_key: Optional[str] = None,
-        model_name: str = "gemini-1.5-flash",
-        temperature: float = 0.1,
-        max_search_results: int = 5,
-    ) -> None:
-        self.logger = logging.getLogger("search_engine.CompetitionSearchEngine")
-        self.max_search_results = max_search_results
-
-        # --- Direct DuckDuckGo search (no langchain wrapper) ---
-        try:
-            self.ddgs = DDGS()
-        except Exception as exc:
-            raise RuntimeError("Failed to initialize DDGS (duckduckgo_search). Install with: pip install ddgs") from exc
-
-        # --- Gemini LLM via LangChain ---
-        api_key = google_api_key or os.getenv("GOOGLE_API_KEY")
+    def __init__(self, model_name: str = "gemini-2.5-flash-lite", max_results: int = 5):
+        self.max_results = max_results
+        self.ddgs = DDGS()
+        
+        api_key = os.getenv("GOOGLE_API_KEY")
         if not api_key:
-            self.logger.warning("GOOGLE_API_KEY not provided. LLM extraction will fail.")
+            raise ValueError("Missing GOOGLE_API_KEY in .env")
+        
         self.llm = ChatGoogleGenerativeAI(
             model=model_name,
-            temperature=temperature,
             google_api_key=api_key,
+            temperature=0.1,
         )
-        # Use structured output (native function calling)
-        self.structured_llm = self.llm.with_structured_output(CompetitionInfo)
-
-        # Prompt template
-        self.prompt = ChatPromptTemplate.from_messages([
-            ("system", """You are an expert research assistant. Extract structured metadata about a case competition.
-Return valid JSON with the following fields: competition, website, registration_deadline, competition_start_date, competition_end_date, organizer, confidence_score.
-Use YYYY-MM-DD for dates. If a field cannot be found, use null. Confidence_score 0.0-1.0 based on snippet clarity."""),
-            ("human", "Competition Name: {competition_name}\n\nWeb Search Results:\n{search_results}")
-        ])
-
-        # Chain: format results -> prompt -> structured LLM
-        self.chain = (
-            RunnablePassthrough.assign(
-                search_results=lambda x: self._format_search_results(x["search_raw"])
-            )
-            | self.prompt
-            | self.structured_llm
-        )
-
-        self.logger.info("Engine initialized with direct DuckDuckGo search.")
-
-    # ---------------------------------------------------------------------
-    # Search using DDGS directly
-    # ---------------------------------------------------------------------
-    def _execute_web_search(self, competition_name: str) -> List[Dict[str, str]]:
-        """Run multiple queries and return raw results as list of dicts."""
-        queries = [
-            f'{competition_name} official website registration deadline',
-            f'{competition_name} competition start end dates 2026',
-            f'{competition_name} organizer company case competition'
-        ]
-        all_results = []
-        for q in queries:
-            try:
-                # Use DDGS.text() to get search results
-                results = list(self.ddgs.text(q, max_results=self.max_search_results))
-                for r in results:
-                    all_results.append({
-                        "title": r.get("title", ""),
-                        "snippet": r.get("body", ""),
-                        "link": r.get("href", ""),
-                    })
-            except Exception as e:
-                self.logger.error("Search failed for '%s': %s", q, e)
-        return all_results
-
-    def _format_search_results(self, raw_results: List[Dict]) -> str:
-        """Convert list of result dicts to a clean string for the prompt."""
-        if not raw_results:
-            return "No search results found."
-        lines = []
-        for r in raw_results:
-            lines.append(f"Title: {r.get('title', '')}\nSnippet: {r.get('snippet', '')}\nLink: {r.get('link', '')}\n")
-        return "\n".join(lines)
-
-    def _fallback_result(self, competition_name: str, reason: str) -> CompetitionInfo:
-        self.logger.info("Fallback for '%s': %s", competition_name, reason)
-        return CompetitionInfo(competition=competition_name, confidence_score=0.0)
-
-    def _recalc_confidence(self, info: CompetitionInfo, raw_results: List[Dict]) -> float:
-        """Optional: recalc confidence based on field presence and result richness."""
-        field_weights = {"website": 0.25, "registration_deadline": 0.20,
-                         "competition_start_date": 0.15, "competition_end_date": 0.15, "organizer": 0.25}
-        presence = sum(weight for field, weight in field_weights.items() if getattr(info, field) is not None)
-        text_len = sum(len(r.get("snippet", "")) for r in raw_results)
-        richness = min(text_len / 4000, 1.0) * 0.15
-        return round(min(1.0, presence * 0.7 + richness), 2)
-
-    # ---------------------------------------------------------------------
-    # Public API
-    # ---------------------------------------------------------------------
-    def search(self, competition_name: str) -> Dict[str, Any]:
-        self.logger.info("Searching for: %s", competition_name)
+    
+    def _search(self, query: str) -> List[Dict]:
+        """Raw DuckDuckGo search results."""
         try:
-            raw_results = self._execute_web_search(competition_name)
-            if not raw_results:
-                return self._fallback_result(competition_name, "No search results").to_dict()
-
-            final: CompetitionInfo = self.chain.invoke({
-                "competition_name": competition_name,
-                "search_raw": raw_results
-            })
-            # Overwrite confidence with recalculated score
-            final.confidence_score = self._recalc_confidence(final, raw_results)
-            return final.to_dict()
+            return list(self.ddgs.text(query, max_results=self.max_results))
         except Exception as e:
-            self.logger.exception("Pipeline error")
-            return self._fallback_result(competition_name, str(e)).to_dict()
+            print(f"Search error for '{query}': {e}")
+            return []
+    
+    def _extract_with_llm(self, competition_name: str, snippets: str) -> CompetitionInfo:
+        """Single LLM call to get both metadata AND categories."""
+        system_prompt = """You extract competition metadata from web snippets.
+Return ONLY valid JSON with these fields:
+- competition: exact name
+- website: URL (null if none)
+- registration_deadline: YYYY-MM-DD
+- start_date: YYYY-MM-DD
+- end_date: YYYY-MM-DD
+- organizer: name of organizing body
+- categories: list of tags like ["Technology","Agriculture","Business","Science","Social Impact","Design","Data Science","Healthcare","Finance","Sustainability"]
+- confidence: 0.0 to 1.0 (how certain you are)
 
-# ---------------------------------------------------------------------------
-# Testing
-# ---------------------------------------------------------------------------
+Use null for missing fields. No extra text."""
+
+        user_prompt = f"Competition: {competition_name}\n\nSearch snippets:\n{snippets}"
+        
+        response = self.llm.invoke([
+            SystemMessage(content=system_prompt),
+            HumanMessage(content=user_prompt)
+        ])
+        
+        # Parse JSON from LLM response
+        try:
+            # Sometimes LLM wraps JSON in ```json ... ```
+            text = response.content.strip()
+            if text.startswith("```json"):
+                text = text[7:]
+            if text.endswith("```"):
+                text = text[:-3]
+            data = json.loads(text)
+            return CompetitionInfo(**data)
+        except Exception as e:
+            print(f"LLM parsing failed: {e}\nRaw response:\n{response.content}")
+            return CompetitionInfo(competition=competition_name, confidence=0.0)
+    
+    def search(self, competition_name: str) -> Dict[str, Any]:
+        print(f"🔎 Searching for: {competition_name}")
+        
+        # Combine multiple queries for richer snippets
+        queries = [
+            competition_name,
+            f"{competition_name} competition dates deadline",
+            f"{competition_name} organizer"
+        ]
+        all_snippets = []
+        for q in queries:
+            for res in self._search(q):
+                snippet = res.get("body", "")
+                if snippet:
+                    all_snippets.append(f"- {snippet}")
+        
+        snippets_text = "\n".join(all_snippets[:15])  # keep token limit reasonable
+        
+        info = self._extract_with_llm(competition_name, snippets_text)
+        return info.model_dump(exclude_none=True)
+
 if __name__ == "__main__":
     engine = CompetitionSearchEngine()
     result = engine.search("Tata Crucible")
-    print(json.dumps(result, indent=2, ensure_ascii=False))
+    print(json.dumps(result, indent=4, ensure_ascii=False))
