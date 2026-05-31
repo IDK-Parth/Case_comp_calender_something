@@ -1,641 +1,610 @@
 [
-  {
-    "competition": "TATA Crucible",
-    "month": "JUNE",
-    "registration_deadline": null,
-    "website": "https://www.tata.com/",
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:31.706693",
-    "description": "TATA Crucible is a competition organized by the Tata group, an Indian multinational conglomerate."
-  },
-  {
-    "competition": "GEP Gameplan",
-    "month": "JUNE",
-    "registration_deadline": null,
-    "website": "https://www.facebook.com/groups/gep.gameplan/",
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:31.726386",
-    "description": "GEP Gameplan is GEP's flagship case study competition for identifying budding consultants and giving them the opportunity to be a part of the company.",
-    "date": "Season 12",
-    "location": null,
-    "prize": null
-  },
-  {
-    "competition": "Sun Tzu Avalon",
-    "month": "JUNE",
-    "registration_deadline": null,
-    "website": null,
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:31.733496"
-  },
-  {
-    "competition": "HCCB Coca Cola",
-    "month": "JUNE",
-    "registration_deadline": null,
-    "website": "https://www.hccb.in/",
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:31.739768",
-    "description": "Hindustan Coca-Cola Beverages (HCCB) is a major FMCG manufacturing company in India, producing beverages like Coca-Cola, Sprite, Minute Maid, and Kinley water. The company is preparing for a potential $1 billion IPO."
-  },
-  {
-    "competition": "AB InBev 10+ Challenge",
-    "month": "JUNE",
-    "registration_deadline": null,
-    "website": null,
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:31.745800"
-  },
-  {
-    "competition": "Wipro B-Pro",
-    "month": "JULY",
-    "registration_deadline": null,
-    "website": null,
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:31.754604"
-  },
-  {
-    "competition": "Amazon ACE",
-    "month": "JULY",
-    "registration_deadline": null,
-    "website": null,
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:31.762643"
-  },
-  {
-    "competition": "Vois Vantage",
-    "month": "JULY",
-    "registration_deadline": null,
-    "website": "https://www.voisfortech.com/",
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:31.769456",
-    "description": "The 'VOIS for Tech: University Engagement Program' is a CSR initiative by Vodafone Intelligent Solutions (VOIS), designed and executed by Vodafone Idea Foundation and implemented by Edunet Foundation."
-  },
-  {
-    "competition": "TATA Steel-a-thon",
-    "month": "JULY",
-    "registration_deadline": null,
-    "website": null,
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:31.775684"
-  },
-  {
-    "competition": "TVS CREDIT",
-    "month": "JULY",
-    "registration_deadline": null,
-    "website": null,
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:31.782275"
-  },
-  {
-    "competition": "GE Thinkaloud",
-    "month": "JULY",
-    "registration_deadline": null,
-    "website": null,
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:31.789398"
-  },
-  {
-    "competition": "Microsoft PM Engage",
-    "month": "JULY",
-    "registration_deadline": null,
-    "website": null,
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:31.796206"
-  },
-  {
-    "competition": "ICICI Beat the Curve",
-    "month": "JULY",
-    "registration_deadline": null,
-    "website": null,
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:31.803429"
-  },
-  {
-    "competition": "Accenture Innovation",
-    "month": "JULY",
-    "registration_deadline": null,
-    "website": null,
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:31.810059"
-  },
-  {
-    "competition": "Swiss Reimagine",
-    "month": "JULY",
-    "registration_deadline": null,
-    "website": null,
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:31.817369"
-  },
-  {
-    "competition": "Asian Paints Chain Reaction",
-    "month": "JULY",
-    "registration_deadline": null,
-    "website": null,
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:31.825286",
-    "description": "Asian Paints Chain Reaction is a competition. No further details are available in the provided search results.",
-    "date": null,
-    "location": null,
-    "prize": null
-  },
-  {
-    "competition": "Welspun Disruptor",
-    "month": "JULY",
-    "registration_deadline": null,
-    "website": null,
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:31.832124"
-  },
-  {
-    "competition": "Mahindra Rise",
-    "month": "JULY",
-    "registration_deadline": null,
-    "website": "https://auto.mahindra.com/",
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:31.839118",
-    "description": "Mahindra Auto is a leading Indian manufacturer of passenger and commercial vehicles, offering a diverse range of SUVs, EVs, pickups, buses, trucks, and accessories. They also produce innovative electric SUVs like the XEV 9e and BE 6."
-  },
-  {
-    "competition": "Perfetti Confy Challenge",
-    "month": "JULY",
-    "registration_deadline": null,
-    "website": null,
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:31.845230"
-  },
-  {
-    "competition": "HUL LIME",
-    "month": "JULY",
-    "registration_deadline": null,
-    "website": null,
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:31.852681"
-  },
-  {
-    "competition": "HUL TechTonic",
-    "month": "JULY",
-    "registration_deadline": null,
-    "website": null,
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:31.859578"
-  },
-  {
-    "competition": "Asian Paints Canvas",
-    "month": "JULY",
-    "registration_deadline": null,
-    "website": null,
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:31.866522"
-  },
-  {
-    "competition": "Tally BizWiz",
-    "month": "JULY",
-    "registration_deadline": null,
-    "website": null,
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:31.873065"
-  },
-  {
-    "competition": "Bond with Pidilite",
-    "month": "JULY",
-    "registration_deadline": null,
-    "website": null,
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:31.879452"
-  },
-  {
-    "competition": "Kenvue Katalyzers",
-    "month": "JULY",
-    "registration_deadline": null,
-    "website": null,
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:31.887412"
-  },
-  {
-    "competition": "Trilytics by Trinity",
-    "month": "JULY",
-    "registration_deadline": null,
-    "website": null,
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:31.894227"
-  },
-  {
-    "competition": "Dabur Verve",
-    "month": "JULY",
-    "registration_deadline": null,
-    "website": "https://www.dabur.com/",
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:31.901984",
-    "description": "Dabur Verve is a competition related to Dabur, an Ayurvedic brand known for its consumer goods and commitment to sustainability."
-  },
-  {
-    "competition": "Flipkart WIRED",
-    "month": "SEPTEMBER",
-    "registration_deadline": null,
-    "website": null,
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:31.909367"
-  },
-  {
-    "competition": "Loreal Sustainability",
-    "month": "SEPTEMBER",
-    "registration_deadline": null,
-    "website": "https://www.loreal.com/en/",
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:31.916794",
-    "description": "L'Oréal is committed to being the most innovative and caring company, offering the best in cosmetics, haircare, and perfume worldwide. They focus on quality, efficacy, and safety, and are actively involved in strategic acquisitions within the beauty industry.",
-    "date": null,
-    "location": null,
-    "prize": null
-  },
-  {
-    "competition": "Infosys Ingenious",
-    "month": "SEPTEMBER",
-    "registration_deadline": null,
-    "website": "https://www.infosys.com/",
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:31.930513",
-    "description": "Infosys Ingenious is a competition hosted by Infosys, a global leader in next-generation digital services and consulting. The competition likely focuses on innovation and digital transformation, aligning with Infosys's core business."
-  },
-  {
-    "competition": "IT Interrobang",
-    "month": "SEPTEMBER",
-    "registration_deadline": null,
-    "website": null,
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:31.945979"
-  },
-  {
-    "competition": "Samsung EDGE",
-    "month": "SEPTEMBER",
-    "registration_deadline": null,
-    "website": null,
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:31.976462"
-  },
-  {
-    "competition": "Amex Super Bowl",
-    "month": "SEPTEMBER",
-    "registration_deadline": null,
-    "website": null,
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:31.989731"
-  },
-  {
-    "competition": "HUL Finance",
-    "month": "SEPTEMBER",
-    "registration_deadline": null,
-    "website": null,
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:32.006554"
-  },
-  {
-    "competition": "Marico OTW",
-    "month": "SEPTEMBER",
-    "registration_deadline": null,
-    "website": null,
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:32.021620"
-  },
-  {
-    "competition": "ABG Leadership Program",
-    "month": "SEPTEMBER",
-    "registration_deadline": null,
-    "website": null,
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:32.040671"
-  },
-  {
-    "competition": "Amazon Ads",
-    "month": "SEPTEMBER",
-    "registration_deadline": null,
-    "website": null,
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:32.054885"
-  },
-  {
-    "competition": "Accenture Strategy",
-    "month": "SEPTEMBER",
-    "registration_deadline": null,
-    "website": null,
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:32.073187"
-  },
-  {
-    "competition": "Cummins Redefine",
-    "month": "OCTOBER",
-    "registration_deadline": null,
-    "website": "https://www.cummins.com/",
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:32.090567",
-    "description": "Cummins is a global power technology leader specializing in diesel and alternative fuel engines and generators. The provided search results do not contain specific details about a competition named \"Cummins Redefine\".",
-    "date": null,
-    "location": null,
-    "prize": null
-  },
-  {
-    "competition": "Diageo Be Spirited",
-    "month": "OCTOBER",
-    "registration_deadline": null,
-    "website": null,
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:32.109223"
-  },
-  {
-    "competition": "TATA Imagination Challenge",
-    "month": "OCTOBER",
-    "registration_deadline": null,
-    "website": null,
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:32.127157"
-  },
-  {
-    "competition": "Myntra Stylbiz",
-    "month": "OCTOBER",
-    "registration_deadline": null,
-    "website": null,
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:32.147187"
-  },
-  {
-    "competition": "Optum Stratethon",
-    "month": "OCTOBER",
-    "registration_deadline": null,
-    "website": null,
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:32.167081"
-  },
-  {
-    "competition": "Navi Crack the Case",
-    "month": "OCTOBER",
-    "registration_deadline": null,
-    "website": "https://navi.com/",
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:32.186807",
-    "description": "Navi Crack the Case is a competition hosted by Navi, a financial services company."
-  },
-  {
-    "competition": "The Governance Challenge",
-    "month": "OCTOBER",
-    "registration_deadline": null,
-    "website": null,
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:32.206277",
-    "description": "The Governance Challenge is a competition focused on the complex system or framework of processes, functions, structures, rules, laws, and norms that direct and control organizations. It explores patterns of rule, practices of governing, and the role of power in shaping societies, economies, and political systems."
-  },
-  {
-    "competition": "RPG Blizzard",
-    "month": "OCTOBER",
-    "registration_deadline": null,
-    "website": null,
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:32.226666"
-  },
-  {
-    "competition": "Bajaj Finserv Atom",
-    "month": "OCTOBER",
-    "registration_deadline": null,
-    "website": null,
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:32.245996"
-  },
-  {
-    "competition": "Bharti FinPro",
-    "month": "OCTOBER",
-    "registration_deadline": null,
-    "website": "https://www.bharti.com/",
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:32.267810",
-    "description": "Bharti Enterprises is an Indian multinational conglomerate founded in 1976, with interests in Telecom, Space Communications, Digital Infrastructure, Financial Services, and Real Estate. Bharti AXA Life Insurance is a leading provider of life insurance policies in India."
-  },
-  {
-    "competition": "Reckitt Global Challenge",
-    "month": "OCTOBER",
-    "registration_deadline": null,
-    "website": null,
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:32.284832"
-  },
-  {
-    "competition": "Mondelez Maestros",
-    "month": "OCTOBER",
-    "registration_deadline": null,
-    "website": "https://www.mondelezinternational.com/",
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:32.310195",
-    "description": "Mondelez International, Inc. is a global snack company that empowers people to snack right in over 150 countries."
-  },
-  {
-    "competition": "Airtel iCreate",
-    "month": "NOVEMBER",
-    "registration_deadline": null,
-    "website": null,
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:32.329191"
-  },
-  {
-    "competition": "Reliance TUP",
-    "month": "NOVEMBER",
-    "registration_deadline": null,
-    "website": null,
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:32.346486"
-  },
-  {
-    "competition": "TITAN Elevate",
-    "month": "NOVEMBER",
-    "registration_deadline": null,
-    "website": null,
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:32.365217"
-  },
-  {
-    "competition": "Kirloskar Case Comp",
-    "month": "NOVEMBER",
-    "registration_deadline": null,
-    "website": null,
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:32.381738"
-  },
-  {
-    "competition": "Philips ThinkUp",
-    "month": "NOVEMBER",
-    "registration_deadline": null,
-    "website": null,
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:32.402021"
-  },
-  {
-    "competition": "Kotak Explore",
-    "month": "NOVEMBER",
-    "registration_deadline": null,
-    "website": "https://www.kotakneo.com/",
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:32.419329",
-    "description": "Kotak Explore is a competition related to Kotak Mahindra Bank's services, likely focusing on their digital platforms like net banking and securities trading."
-  },
-  {
-    "competition": "PwC Indian Campus Contender",
-    "month": "NOVEMBER",
-    "registration_deadline": null,
-    "website": "https://www.pwc.in/",
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:32.437339",
-    "description": "PwC Indian Campus Contender is a competition organized by PwC India for students."
-  },
-  {
-    "competition": "KPMG Ideation Challenge",
-    "month": "NOVEMBER",
-    "registration_deadline": null,
-    "website": "https://kpmg.com/in/en.html",
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:32.458252",
-    "description": "The KPMG Ideation Challenge is a competition hosted by KPMG."
-  },
-  {
-    "competition": "Tesco ASCEND Case Challenge",
-    "month": "NOVEMBER",
-    "registration_deadline": null,
-    "website": null,
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:32.475676"
-  },
-  {
-    "competition": "Hero Motorcorp Campus Challenge",
-    "month": "NOVEMBER",
-    "registration_deadline": null,
-    "website": null,
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:32.493826"
-  },
-  {
-    "competition": "Colgate Transcend",
-    "month": "NOVEMBER",
-    "registration_deadline": null,
-    "website": "https://www.colgate.com/en-in",
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:32.509367",
-    "description": "The provided search results do not contain specific details about a competition named \"Colgate Transcend\". The results primarily focus on Colgate's oral care products and the company's global presence.",
-    "date": null,
-    "location": null,
-    "prize": null
-  },
-  {
-    "competition": "PwC US Advisory Whitepaper Competition",
-    "month": "NOVEMBER",
-    "registration_deadline": null,
-    "website": null,
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:32.526889"
-  },
-  {
-    "competition": "Loreal Brandstorm",
-    "month": "JANUARY",
-    "registration_deadline": null,
-    "website": null,
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:32.543948"
-  },
-  {
-    "competition": "JSJ Quest",
-    "month": "JANUARY",
-    "registration_deadline": null,
-    "website": null,
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:32.563823"
-  },
-  {
-    "competition": "Goldman Sachs Women' $ Possibilities Summit",
-    "month": "JANUARY",
-    "registration_deadline": null,
-    "website": "https://www.goldmansachs.com/",
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:32.586275",
-    "description": "The Goldman Sachs Women's Possibilities Summit is an event hosted by Goldman Sachs, a leading global investment banking, securities, and asset and wealth management firm."
-  },
-  {
-    "competition": "IDFC FAME",
-    "month": "JANUARY",
-    "registration_deadline": null,
-    "website": null,
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:32.605463"
-  },
-  {
-    "competition": "Nation with Namo: Nation Building",
-    "month": "FEBRUARY",
-    "registration_deadline": null,
-    "website": null,
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:32.625205"
-  },
-  {
-    "competition": "MakeMyTrip",
-    "month": "FEBRUARY",
-    "registration_deadline": null,
-    "website": "https://www.makemytrip.com/",
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:32.651279",
-    "description": "MakeMyTrip is a leading online travel company established in 2000, offering flight, hotel, bus, and train ticket bookings, as well as holiday packages and mobile applications for booking.",
-    "date": null,
-    "location": null,
-    "prize": null
-  },
-  {
-    "competition": "Turk'$ Business",
-    "month": "FEBRUARY",
-    "registration_deadline": null,
-    "website": null,
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:32.673551"
-  },
-  {
-    "competition": "Boat",
-    "month": "FEBRUARY",
-    "registration_deadline": null,
-    "website": "https://www.boat-lifestyle.com/",
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:32.692168",
-    "description": "boAt is a consumer electronics brand specializing in audio products like earbuds, headphones, earphones, and wireless speakers. They also offer boat accessories."
-  },
-  {
-    "competition": "Maruti Suzuki Xcelerate",
-    "month": "MARCH",
-    "registration_deadline": null,
-    "website": null,
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:32.707307"
-  },
-  {
-    "competition": "Nestle Genesis",
-    "month": "MAY",
-    "registration_deadline": null,
-    "website": null,
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:32.722414"
-  },
-  {
-    "competition": "AMEX Young Challenge",
-    "month": "MAY",
-    "registration_deadline": null,
-    "website": null,
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:32.740878"
-  },
-  {
-    "competition": "IFSA Cup",
-    "month": "OTHER",
-    "registration_deadline": null,
-    "website": null,
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:32.760567"
-  },
-  {
-    "competition": "Harvard",
-    "month": "OTHER",
-    "registration_deadline": null,
-    "website": null,
-    "event_type": "case competition",
-    "saved_at": "2026-05-30T01:20:32.779386"
-  }
+    {
+        "competition": "TATA Crucible",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:37.865486"
+    },
+    {
+        "competition": "GEP Gameplan",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:37.877045"
+    },
+    {
+        "competition": "Sun Tzu Avalon",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:37.883593"
+    },
+    {
+        "competition": "HCCB Coca Cola",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:37.891789"
+    },
+    {
+        "competition": "AB InBev 10+ Challenge",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:37.898512"
+    },
+    {
+        "competition": "Wipro B-Pro",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:37.905951"
+    },
+    {
+        "competition": "Amazon ACE",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:37.912574"
+    },
+    {
+        "competition": "Vois Vantage",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:37.919318"
+    },
+    {
+        "competition": "TATA Steel-a-thon",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:37.926180"
+    },
+    {
+        "competition": "TVS CREDIT",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:37.935060"
+    },
+    {
+        "competition": "GE Thinkaloud",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:37.942168"
+    },
+    {
+        "competition": "Microsoft PM Engage",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:37.949955"
+    },
+    {
+        "competition": "ICICI Beat the Curve",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:37.957647"
+    },
+    {
+        "competition": "Accenture Innovation",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:37.965279"
+    },
+    {
+        "competition": "Swiss Reimagine",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:37.971396"
+    },
+    {
+        "competition": "Asian Paints Chain Reaction",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:37.979508"
+    },
+    {
+        "competition": "Welspun Disruptor",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:37.986778"
+    },
+    {
+        "competition": "Mahindra Rise",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:37.994300"
+    },
+    {
+        "competition": "Perfetti Confy Challenge",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:38.001512"
+    },
+    {
+        "competition": "HUL LIME",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:38.009741"
+    },
+    {
+        "competition": "HUL TechTonic",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:38.016955"
+    },
+    {
+        "competition": "Asian Paints Canvas",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:38.023927"
+    },
+    {
+        "competition": "Tally BizWiz",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:38.031046"
+    },
+    {
+        "competition": "Bond with Pidilite",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:38.037527"
+    },
+    {
+        "competition": "Kenvue Katalyzers",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:38.044865"
+    },
+    {
+        "competition": "Trilytics by Trinity",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:38.052181"
+    },
+    {
+        "competition": "Dabur Verve",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:38.059858"
+    },
+    {
+        "competition": "Flipkart WIRED",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:38.066939"
+    },
+    {
+        "competition": "Loreal Sustainability",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:38.083224"
+    },
+    {
+        "competition": "Infosys Ingenious",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:38.099863"
+    },
+    {
+        "competition": "IT Interrobang",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:38.117223"
+    },
+    {
+        "competition": "HUL Techtonic",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:38.133127"
+    },
+    {
+        "competition": "Samsung EDGE",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:38.151726"
+    },
+    {
+        "competition": "Amex Super Bowl",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:38.168818"
+    },
+    {
+        "competition": "HUL Finance",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:38.187297"
+    },
+    {
+        "competition": "Marico OTW",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:38.207657"
+    },
+    {
+        "competition": "ABG Leadership Program",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:38.228381"
+    },
+    {
+        "competition": "Amazon Ads",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:38.247236"
+    },
+    {
+        "competition": "Accenture Strategy",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:38.266356"
+    },
+    {
+        "competition": "Cummins Redefine",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:38.283873"
+    },
+    {
+        "competition": "Diageo Be Spirited",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:38.302249"
+    },
+    {
+        "competition": "TATA Imagination Challenge",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:38.322103"
+    },
+    {
+        "competition": "Myntra Stylbiz",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:38.339563"
+    },
+    {
+        "competition": "Optum Stratethon",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:38.358794"
+    },
+    {
+        "competition": "Navi Crack the Case",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:38.377770"
+    },
+    {
+        "competition": "The Governance Challenge",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:38.396685"
+    },
+    {
+        "competition": "RPG Blizzard",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:38.415348"
+    },
+    {
+        "competition": "Bajaj Finserv Atom",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:38.436596"
+    },
+    {
+        "competition": "Bharti FinPro",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:38.456488"
+    },
+    {
+        "competition": "Reckitt Global Challenge",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:38.474458"
+    },
+    {
+        "competition": "Mondelez Maestros",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:38.489936"
+    },
+    {
+        "competition": "Airtel iCreate",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:38.511127"
+    },
+    {
+        "competition": "Reliance TUP",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:38.527978"
+    },
+    {
+        "competition": "TITAN Elevate",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:38.545254"
+    },
+    {
+        "competition": "Kirloskar Case Comp",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:38.560684"
+    },
+    {
+        "competition": "Philips ThinkUp",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:38.580277"
+    },
+    {
+        "competition": "Kotak Explore",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:38.600877"
+    },
+    {
+        "competition": "PwC Indian Campus Contender",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:38.620597"
+    },
+    {
+        "competition": "KPMG Ideation Challenge",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:38.642641"
+    },
+    {
+        "competition": "Tesco ASCEND Case Challenge",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:38.660637"
+    },
+    {
+        "competition": "Hero Motorcorp Campus Challenge",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:38.676951"
+    },
+    {
+        "competition": "Colgate Transcend",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:38.690447"
+    },
+    {
+        "competition": "PwC US Advisory Whitepaper Competition",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:38.706305"
+    },
+    {
+        "competition": "Loreal Brandstorm",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:38.726096"
+    },
+    {
+        "competition": "JSJ Quest",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:38.742050"
+    },
+    {
+        "competition": "Goldman Sachs Women' $ Possibilities Summit",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:38.757328"
+    },
+    {
+        "competition": "IDFC FAME",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:38.772589"
+    },
+    {
+        "competition": "Nation with Namo: Nation Building",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:38.791759"
+    },
+    {
+        "competition": "MakeMyTrip",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:38.809937"
+    },
+    {
+        "competition": "Turk'$ Business",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:38.820103"
+    },
+    {
+        "competition": "Boat",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:38.835119"
+    },
+    {
+        "competition": "Maruti Suzuki Xcelerate",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:38.847365"
+    },
+    {
+        "competition": "Nestle Genesis",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:38.862392"
+    },
+    {
+        "competition": "AMEX Young Challenge",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:38.881424"
+    },
+    {
+        "competition": "IFSA Cup",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:38.900873"
+    },
+    {
+        "competition": "Harvard (case comp)",
+        "registration_deadline": "",
+        "event_date": "",
+        "website": "",
+        "event_type": "Case Competition",
+        "saved_at": "2026-05-31T12:42:38.919595"
+    }
 ]

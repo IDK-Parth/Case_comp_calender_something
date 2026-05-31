@@ -1,183 +1,200 @@
-from dotenv import load_dotenv
-import os
-import time
+from __future__ import annotations
+
 import json
-from queue import Queue
-from threading import Lock
+import logging
+import os
+import re
 from datetime import datetime
-from typing import List, Optional, Dict, Any
-#from langchain.chat_models import ChatGoogleGenerativeAI
+from pathlib import Path
+from typing import Any, Dict, List, Optional
+from urllib.parse import urlparse
+
+from dotenv import load_dotenv
+from pydantic import BaseModel, Field, field_validator, ValidationError
 from langchain_google_genai import ChatGoogleGenerativeAI
-from pydantic import BaseModel, Field
-from google.genai import Client
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.runnables import RunnablePassthrough
 
-load_dotenv()
+# Import the correct DDGS package (install with: pip install ddgs)
+from ddgs import DDGS
 
-# Configuration
-MODEL_NAME = "gemini-2.5-flash-lite"  # Fastest & cheapest model: $0.10/1M input, $0.40/1M output
-INPUT_TOKEN_PRICE = 0.10 / 1_000_000  # $0.10 per million input tokens
-OUTPUT_TOKEN_PRICE = 0.40 / 1_000_000  # $0.40 per million output tokens
+env_path = Path(__file__).parent.parent / ".env"
+if env_path.exists():
+    load_dotenv(dotenv_path=env_path)
+    print(f"✅ Loaded .env from {env_path}")
+else:
+    print(f"⚠️ .env not found at {env_path}, checking default locations...")
+    load_dotenv()  # fallback to default search
 
-# Token tracking class
-class TokenTracker:
-    def __init__(self):
-        self.total_input_tokens = 0
-        self.total_output_tokens = 0
-        self.total_requests = 0
-        self.lock = Lock()
-    
-    def add_usage(self, input_tokens: int, output_tokens: int):
-        with self.lock:
-            self.total_input_tokens += input_tokens
-            self.total_output_tokens += output_tokens
-            self.total_requests += 1
-    
-    def get_estimated_cost(self) -> float:
-        input_cost = self.total_input_tokens * INPUT_TOKEN_PRICE
-        output_cost = self.total_output_tokens * OUTPUT_TOKEN_PRICE
-        return input_cost + output_cost
-    
-    def display_status(self):
-        print(f"\n📊 Token Usage Summary:")
-        print(f"   Total Requests: {self.total_requests}")
-        print(f"   Total Input Tokens: {self.total_input_tokens:,}")
-        print(f"   Total Output Tokens: {self.total_output_tokens:,}")
-        print(f"   Estimated Cost: ${self.get_estimated_cost():.6f}")
-        print(f"   Total Cost (combined): ${(self.get_estimated_cost()):.6f}")
+# Rest of your code follows...
+# ---------------------------------------------------------------------------
+# Logging
+# ---------------------------------------------------------------------------
+logging.basicConfig(level=logging.INFO, format="%(asctime)s | %(name)s | %(levelname)s | %(message)s")
+logger = logging.getLogger("search_engine")
 
-# FIFO Request Queue with Rate Limiting
-class RateLimitedQueue:
-    def __init__(self, requests_per_minute: int = 15):
-        self.queue = Queue()
-        self.requests_per_minute = requests_per_minute
-        self.request_timestamps = []
-        self.lock = Lock()
-        self.token_tracker = TokenTracker()
-        
-    def add_request(self, prompt: str, callback):
-        """Add a request to the FIFO queue"""
-        self.queue.put((prompt, callback))
-        
-    def process_queue(self):
-        """Process requests with rate limiting and FIFO ordering"""
-        while not self.queue.empty():
-            prompt, callback = self.queue.get()
-            self._wait_if_needed()
-            self._process_request(prompt, callback)
-    
-    def _wait_if_needed(self):
-        """Implement rate limiting - 15 requests per minute"""
-        with self.lock:
-            current_time = time.time()
-            # Remove timestamps older than 60 seconds
-            self.request_timestamps = [ts for ts in self.request_timestamps 
-                                       if current_time - ts < 60]
-            
-            if len(self.request_timestamps) >= self.requests_per_minute:
-                oldest = min(self.request_timestamps)
-                wait_time = 60 - (current_time - oldest)
-                if wait_time > 0:
-                    print(f"⏳ Rate limit reached. Waiting {wait_time:.1f} seconds...")
-                    time.sleep(wait_time + 0.1)
-            
-            self.request_timestamps.append(time.time())
-    
-    def _process_request(self, prompt: str, callback):
-        """Process a single request and update token tracking"""
-        try:
-            # Pre-call token estimation using countTokens API
-            input_tokens = self.estimate_tokens(prompt)
-            print(f"📝 Estimated input tokens: {input_tokens:,}")
-            
-            # Make the API call
-            result = callback(prompt)
-            
-            # Estimate output tokens (simplified - use actual response tokens)
-            output_tokens = len(str(result).split()) // 0.75  # Rough estimate
-            print(f"📤 Estimated output tokens: {output_tokens:,}")
-            
-            # Update token tracker
-            self.token_tracker.add_usage(input_tokens, output_tokens)
-            self.token_tracker.display_status()
-            
-            return result
-            
-        except Exception as e:
-            print(f"❌ Error processing request: {e}")
+# ---------------------------------------------------------------------------
+# Pydantic Model (unchanged)
+# ---------------------------------------------------------------------------
+class CompetitionInfo(BaseModel):
+    competition: str = Field(..., description="Exact or normalized name of the competition.")
+    website: Optional[str] = Field(default=None, description="Official competition website URL.")
+    registration_deadline: Optional[str] = Field(default=None, description="YYYY-MM-DD")
+    competition_start_date: Optional[str] = Field(default=None, description="YYYY-MM-DD")
+    competition_end_date: Optional[str] = Field(default=None, description="YYYY-MM-DD")
+    organizer: Optional[str] = Field(default=None, description="Company or group organizing the event.")
+    confidence_score: float = Field(default=0.0, ge=0.0, le=1.0)
+
+    @field_validator("website")
+    @classmethod
+    def validate_url(cls, v: Optional[str]) -> Optional[str]:
+        if not v or not isinstance(v, str):
             return None
-    
-    def estimate_tokens(self, text: str) -> int:
-        """Estimate tokens using simple math (approx 0.75 words per token)"""
-        word_count = len(text.split())
-        return int(word_count // 0.75) or 100  # Minimum 100 tokens for safety
-    
-    def get_remaining_quota(self, daily_limit: int = 1500) -> int:
-        """Calculate remaining daily quota based on current usage"""
-        remaining = daily_limit - self.token_tracker.total_requests
-        return max(0, remaining)
+        v = v.strip()
+        if not v.startswith(("http://", "https://")):
+            v = "https://" + v
+        parsed = urlparse(v)
+        return v if parsed.netloc and "." in parsed.netloc else None
 
-# Define the data model
-class Competition(BaseModel):
-    competition: str = Field(description="Name of the competition")
-    month: Optional[str] = Field(description="Month when competition occurs", default=None)
-    registration_deadline: Optional[str] = Field(description="Registration deadline", default=None)
-    website: Optional[str] = Field(description="Official website URL", default=None)
-    event_type: Optional[str] = Field(description="Type of event", default=None)
+    @field_validator("registration_deadline", "competition_start_date", "competition_end_date", mode="before")
+    @classmethod
+    def validate_date(cls, v: Optional[str]) -> Optional[str]:
+        if not v or not isinstance(v, str):
+            return None
+        v = v.strip().split("T")[0].split()[0]
+        for fmt in ("%Y-%m-%d", "%d-%m-%Y", "%m/%d/%Y", "%d/%m/%Y", "%B %d, %Y", "%b %d, %Y", "%d %B %Y", "%d %b %Y"):
+            try:
+                return datetime.strptime(v, fmt).strftime("%Y-%m-%d")
+            except ValueError:
+                continue
+        return None
 
-# Initialize the model (fastest & cheapest)
-llm = ChatGoogleGenerativeAI(
-    model=MODEL_NAME,
-    google_api_key=os.getenv("GOOGLE_API_KEY"),
-    temperature=0,
-    max_retries=2,
-)
+    def to_dict(self) -> Dict[str, Any]:
+        return self.model_dump(mode="json")
 
-# Create structured output handler
-structured_llm = llm.with_structured_output(Competition, method="json_mode")
+# ---------------------------------------------------------------------------
+# Search Engine (no langchain-community)
+# ---------------------------------------------------------------------------
+class CompetitionSearchEngine:
+    def __init__(
+        self,
+        google_api_key: Optional[str] = None,
+        model_name: str = "gemini-1.5-flash-latest",
+        temperature: float = 0.1,
+        max_search_results: int = 5,
+    ) -> None:
+        self.logger = logging.getLogger("search_engine.CompetitionSearchEngine")
+        self.max_search_results = max_search_results
 
-# Initialize rate-limited queue
-rate_limiter = RateLimitedQueue(requests_per_minute=15)
+        # --- Direct DuckDuckGo search (no langchain wrapper) ---
+        try:
+            self.ddgs = DDGS()
+        except Exception as exc:
+            raise RuntimeError("Failed to initialize DDGS (duckduckgo_search). Install with: pip install ddgs") from exc
 
-def process_competition_extraction(prompt: str):
-    """Callback function for processing competition extraction"""
-    response = structured_llm.invoke(prompt)
-    if not isinstance(response, list):
-        response = [response]
-    return response
+        # --- Gemini LLM via LangChain ---
+        api_key = google_api_key or os.getenv("GOOGLE_API_KEY")
+        if not api_key:
+            self.logger.warning("GOOGLE_API_KEY not provided. LLM extraction will fail.")
+        self.llm = ChatGoogleGenerativeAI(
+            model=model_name,
+            temperature=temperature,
+            google_api_key=api_key,
+        )
+        # Use structured output (native function calling)
+        self.structured_llm = self.llm.with_structured_output(CompetitionInfo)
 
-# Sample text with multiple competitions
-sample_text = """
-Flipkart GRID 7.0
-Registration closes August 15
-Website: flipkart.com/grid
+        # Prompt template
+        self.prompt = ChatPromptTemplate.from_messages([
+            ("system", """You are an expert research assistant. Extract structured metadata about a case competition.
+Return valid JSON with the following fields: competition, website, registration_deadline, competition_start_date, competition_end_date, organizer, confidence_score.
+Use YYYY-MM-DD for dates. If a field cannot be found, use null. Confidence_score 0.0-1.0 based on snippet clarity."""),
+            ("human", "Competition Name: {competition_name}\n\nWeb Search Results:\n{search_results}")
+        ])
 
-HUL LIME
-September
-Website: hul.com/lime
+        # Chain: format results -> prompt -> structured LLM
+        self.chain = (
+            RunnablePassthrough.assign(
+                search_results=lambda x: self._format_search_results(x["search_raw"])
+            )
+            | self.prompt
+            | self.structured_llm
+        )
 
-Google Code Jam
-May 15 - June 30
-Website: codingcompetitions.withgoogle.com
-"""
+        self.logger.info("Engine initialized with direct DuckDuckGo search.")
 
-prompt = f"""
-Extract all competitions from the text below. Return a list of competitions.
+    # ---------------------------------------------------------------------
+    # Search using DDGS directly
+    # ---------------------------------------------------------------------
+    def _execute_web_search(self, competition_name: str) -> List[Dict[str, str]]:
+        """Run multiple queries and return raw results as list of dicts."""
+        queries = [
+            f'{competition_name} official website registration deadline',
+            f'{competition_name} competition start end dates 2026',
+            f'{competition_name} organizer company case competition'
+        ]
+        all_results = []
+        for q in queries:
+            try:
+                # Use DDGS.text() to get search results
+                results = list(self.ddgs.text(q, max_results=self.max_search_results))
+                for r in results:
+                    all_results.append({
+                        "title": r.get("title", ""),
+                        "snippet": r.get("body", ""),
+                        "link": r.get("href", ""),
+                    })
+            except Exception as e:
+                self.logger.error("Search failed for '%s': %s", q, e)
+        return all_results
 
-Text:
-{sample_text}
-"""
+    def _format_search_results(self, raw_results: List[Dict]) -> str:
+        """Convert list of result dicts to a clean string for the prompt."""
+        if not raw_results:
+            return "No search results found."
+        lines = []
+        for r in raw_results:
+            lines.append(f"Title: {r.get('title', '')}\nSnippet: {r.get('snippet', '')}\nLink: {r.get('link', '')}\n")
+        return "\n".join(lines)
 
-# Add request to FIFO queue
-rate_limiter.add_request(prompt, process_competition_extraction)
+    def _fallback_result(self, competition_name: str, reason: str) -> CompetitionInfo:
+        self.logger.info("Fallback for '%s': %s", competition_name, reason)
+        return CompetitionInfo(competition=competition_name, confidence_score=0.0)
 
-# Process all queued requests
-print("🚀 Starting to process competition extraction requests...")
-print(f"📊 Using model: {MODEL_NAME}")
-print(f"⏱️  Rate limit: 15 requests per minute")
+    def _recalc_confidence(self, info: CompetitionInfo, raw_results: List[Dict]) -> float:
+        """Optional: recalc confidence based on field presence and result richness."""
+        field_weights = {"website": 0.25, "registration_deadline": 0.20,
+                         "competition_start_date": 0.15, "competition_end_date": 0.15, "organizer": 0.25}
+        presence = sum(weight for field, weight in field_weights.items() if getattr(info, field) is not None)
+        text_len = sum(len(r.get("snippet", "")) for r in raw_results)
+        richness = min(text_len / 4000, 1.0) * 0.15
+        return round(min(1.0, presence * 0.7 + richness), 2)
 
-# Process the queue
-rate_limiter.process_queue()
+    # ---------------------------------------------------------------------
+    # Public API
+    # ---------------------------------------------------------------------
+    def search(self, competition_name: str) -> Dict[str, Any]:
+        self.logger.info("Searching for: %s", competition_name)
+        try:
+            raw_results = self._execute_web_search(competition_name)
+            if not raw_results:
+                return self._fallback_result(competition_name, "No search results").to_dict()
 
-# Display final quota status
-remaining = rate_limiter.get_remaining_quota(1500)
-print(f"\n🎯 Remaining daily quota: {remaining} requests")
+            final: CompetitionInfo = self.chain.invoke({
+                "competition_name": competition_name,
+                "search_raw": raw_results
+            })
+            # Overwrite confidence with recalculated score
+            final.confidence_score = self._recalc_confidence(final, raw_results)
+            return final.to_dict()
+        except Exception as e:
+            self.logger.exception("Pipeline error")
+            return self._fallback_result(competition_name, str(e)).to_dict()
+
+# ---------------------------------------------------------------------------
+# Testing
+# ---------------------------------------------------------------------------
+if __name__ == "__main__":
+    engine = CompetitionSearchEngine()
+    result = engine.search("Tata Crucible")
+    print(json.dumps(result, indent=2, ensure_ascii=False))
